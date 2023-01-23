@@ -1,0 +1,18 @@
+Let t be the time window represented in number of message opportunities between two T events, and
+0 < α < 1.
+The algorithm works as follows. ˆP is only updated at each T event. In the time window t between two T
+events, let r be the number of received messages (i.e. number of 1’s in M events), and f be the sum of all losses,
+l, from all M events and the current T event. The mean μ = r/(r + f ), and ˆP = ˆP ∗ α + (1 − alpha) ∗ μ.
+For each entry in this estimator, it will take 2 bytes for storing r and f , and 1 byte (fixed point) or 4
+byte (floating point) for storing ˆP . The amount of computation for ˆP involves 2 additions, 1 division, and two
+multiplications. The computation is done per T event rather than per M event.
+
+0 < α < 1
+
+r = received messages
+f = sum of all losses
+
+mean μ = r/(r + f )
+
+ˆP = ˆP ∗ α + (1 − α) ∗ μ
+
